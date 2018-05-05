@@ -22,7 +22,16 @@ public class GameManager : MonoBehaviour {
 	public void Awake ()
 	{
 		saveFile = GetComponent<SaveFile> ();
+		hall = GetComponent<hall> ();
+		safe = GetComponent<safe> ();
 		Cursor.visible = true;
+		SetUpAll ();
+	}
+
+	public void SetUpAll()
+	{
+		hall.transform = Vector3 (0, 0, 0);
+		safe.transform = Vector3 (18, 0, 0); // put x as certain seamless value
 	}
 
 	public void Update ()
@@ -42,6 +51,7 @@ public class GameManager : MonoBehaviour {
 	public void FieldChange ()
 	{
 		// if player met stairs, hall and safe switch positions.
+		// should get two hall object two safe object
 
 	}
 
@@ -52,7 +62,6 @@ public class GameManager : MonoBehaviour {
 		if (player.score > saveFile.highScore) {
 			scoreText = "Congratulations! New High Score!"
 		}
-		//gameEnd == true;
 		BackToMenu ();
 	}
 
